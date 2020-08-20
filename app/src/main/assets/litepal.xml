@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="Msg" ></dbname>
+    <version value="1" ></version>
+    <list>
+        <mapping class="com.ccbft.lyyrobot.domain.Msg"></mapping>
+
+    </list>
+</litepal>

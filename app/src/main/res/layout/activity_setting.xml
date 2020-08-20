@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingActivity">
+    <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="聊天背景："
+                android:textColor="#000000"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/sp_dropdown"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <include layout="@layout/line"/>
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="聊天背景时间颜色："
+                android:textColor="#000000"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/sp_dropdown2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <include layout="@layout/line"/>
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="聊天背景人物名字颜色："
+                android:textColor="#000000"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/sp_dropdown3"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <include layout="@layout/line"/>
+        <Button
+            android:id="@+id/api"
+            android:textColor="#000000"
+            android:gravity="left|center_vertical"
+            android:textSize="16sp"
+            android:background="@drawable/dong_btn"
+            android:text="API KEY&amp;API SECRECT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/line"/>
+        <Button
+            android:id="@+id/clear"
+            android:textColor="#000000"
+            android:gravity="left|center_vertical"
+            android:textSize="16sp"
+            android:background="@drawable/dong_btn"
+            android:text="清空聊天记录"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/line"/>
+        <Button
+            android:id="@+id/feedback"
+            android:textColor="#000000"
+            android:gravity="left|center_vertical"
+            android:textSize="16sp"
+            android:background="@drawable/dong_btn"
+            android:text="用户反馈"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

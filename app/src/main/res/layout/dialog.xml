@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/dialogLayout"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
+        android:text="设置ApiKey和ApiSecrect"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/et1"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:textColorHint="#ccc"
+        android:textColor="#fff"
+        android:background="@drawable/etbg"
+        android:hint="请输入您的API KEY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/et2"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:textColor="#fff"
+        android:textColorHint="#ccc"
+        android:background="@drawable/etbg"
+        android:hint="请输入您的API SECRECT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn1"
+            android:background="@drawable/dongbtn2"
+            android:textColor="#ccc"
+            android:text="取消"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn2"
+            android:textColor="#ccc"
+            android:background="@drawable/dongbtn2"
+            android:layout_alignParentRight="true"
+            android:text="保存"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn3"
+            android:textColor="#ccc"
+            android:background="@drawable/dongbtn2"
+            android:layout_centerHorizontal="true"
+            android:text="重置"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</LinearLayout>
