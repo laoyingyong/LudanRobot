@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+    <TextView
+        android:paddingTop="10dp"
+        android:text="常见问题"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/helpTv"
+                android:padding="10dp"
+                android:text="1. 什么是API KEY和API SECRECT?"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="    答：API KEY和API SECRECT可以从茉莉机器人官网中获取。您可以到茉莉机器人官网中注册一个账号，然后设置您的机器人API KEY和API SECRECT,这样机器人就变成您的专属机器人了。您可以在官网上设置自己的词库，想让机器人怎么回答您的问题就怎么回答。如果您不进行任何设置的话，使用的就是默认的API KEY和API SECRECT."
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:padding="10dp"
+                android:text="2. 如何找回密码?"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="    答：您需要设置手机号和密保问题之后才可以找回密码。在登录界面点击“找回密码，然后输入相关信息即可看到您的密码。"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:padding="10dp"
+                android:text="3. 本软件收费吗?"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="    答：卤蛋机器人是一款开源软件，完全采用免费接口开发，仅供学习使用。使用卤蛋机器人完全免费，我们不收取您的任何费用。"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/feedbackTv"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#f00"
+        android:gravity="center_horizontal"
+        android:text="还有疑问？请反馈给我们"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
