@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +23,7 @@ import android.widget.Toast;
 public class SettingActivity extends BaseActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    private Button api,clear,feedback;
+    private Button api,clear,feedback,securityQuestionBtn,helpBtn;
     private Toolbar toolbar;
     private SQLiteDatabase sqLiteDatabase;
 
@@ -45,6 +47,8 @@ public class SettingActivity extends BaseActivity {
         api=findViewById(R.id.api);
         clear=findViewById(R.id.clear);
         feedback=findViewById(R.id.feedback);
+        securityQuestionBtn=findViewById(R.id.securityQuestionBtn);
+        helpBtn=findViewById(R.id.helpBtn);
         sharedPreferences=getSharedPreferences("setting",MODE_PRIVATE);
         editor=sharedPreferences.edit();
         String [] arr={"背景1","背景2","背景3","背景4","背景5"};
@@ -161,6 +165,7 @@ public class SettingActivity extends BaseActivity {
         final Button btn1=view.findViewById(R.id.btn1);
         final Button btn2=view.findViewById(R.id.btn2);
         final Button btn3=view.findViewById(R.id.btn3);
+        final ImageView cancelIv=view.findViewById(R.id.cancelIv);
         final AlertDialog alertDialog = builder.create();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +188,12 @@ public class SettingActivity extends BaseActivity {
             public void onClick(View v) {
                 et1.setText("fe6ed258c8faf18e6400bd7a9d401f16");
                 et2.setText("jwxa3c845wxb");
+            }
+        });
+        cancelIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
             }
         });
         api.setOnClickListener(new View.OnClickListener() {
@@ -220,6 +231,20 @@ public class SettingActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingActivity.this,FeedbackActivity.class));
+            }
+        });
+
+        securityQuestionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingActivity.this,SetSecurityQuestionActivity.class));
+            }
+        });
+
+        helpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingActivity.this,HelpActivity.class));
             }
         });
     }

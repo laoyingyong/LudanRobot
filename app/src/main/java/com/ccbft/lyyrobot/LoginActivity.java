@@ -35,6 +35,7 @@ public class LoginActivity extends BaseActivity {
     private TextView registerTv;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private TextView forgetPasswordTv;
     private static final String TAG = "LoginActivity";
 
     @Override
@@ -98,6 +99,13 @@ public class LoginActivity extends BaseActivity {
                 startActivityForResult(intent,0);
             }
         });
+
+        forgetPasswordTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,ForgetPasswordActivity.class));
+            }
+        });
     }
 
     private void initData() {
@@ -112,6 +120,7 @@ public class LoginActivity extends BaseActivity {
         registerTv=findViewById(R.id.registerTv);
         loginBtn=findViewById(R.id.loginBtn);
         checkBox=findViewById(R.id.checkBox);
+        forgetPasswordTv=findViewById(R.id.forgetPasswordTv);
         accountEt.setText(sharedPreferences.getString("username",""));
         passwordEt.setText(sharedPreferences.getString("password",""));
     }
