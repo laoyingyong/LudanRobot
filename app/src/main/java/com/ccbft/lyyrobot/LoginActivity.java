@@ -36,6 +36,7 @@ public class LoginActivity extends BaseActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private TextView forgetPasswordTv;
+    private boolean flag;//是否保存了用户名和密码
     private static final String TAG = "LoginActivity";
 
     @Override
@@ -66,24 +67,25 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void done(User user1, BmobException e) {
                         if(e==null){
-                            editor.putString("username",username);
-                            editor.putString("password",password);
-                            editor.apply();//将密码保存到本地
+                            if(checkBox.isChecked()){
+                                editor.putString("username",username);
+                                editor.putString("password",password);
+                                editor.putBoolean("flag",true);
+                                editor.apply();//将密码保存到本地
+                            }else {//清除本地保存的用户名密码信息
+                                editor.remove("username");
+                                editor.remove("password");
+                                editor.remove("flag");
+                                editor.apply();
+                            }
                             User currentUser = BmobUser.getCurrentUser(User.class);
                             Toast.makeText(LoginActivity.this, currentUser.getNickname()+"\n登录成功！", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         }
                         else {
                             String msg=e.getMessage();
-                            String tip="";
-                            if(msg.contains("incorrect")){
-                                tip="用户名或密码不正确！";
-                            }else if(msg.contains("1154")){
-                                tip="网络未连接！";
-                            }
-                            Snackbar snackbar = Snackbar.make(v, "登录失败!\n" + tip, Snackbar.LENGTH_LONG);
+                            Snackbar snackbar = Snackbar.make(v, "登录失败!\n" + msg, Snackbar.LENGTH_LONG);
 
-                            //Toast.makeText(LoginActivity.this, "登录失败!\n"+tip, Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -123,6 +125,12 @@ public class LoginActivity extends BaseActivity {
         forgetPasswordTv=findViewById(R.id.forgetPasswordTv);
         accountEt.setText(sharedPreferences.getString("username",""));
         passwordEt.setText(sharedPreferences.getString("password",""));
+        flag = sharedPreferences.getBoolean("flag", false);
+        if (flag){
+            checkBox.setChecked(true);
+        }else {
+            checkBox.setChecked(false);
+        }
     }
 
 

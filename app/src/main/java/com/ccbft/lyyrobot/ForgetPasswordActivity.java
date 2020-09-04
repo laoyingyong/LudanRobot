@@ -3,6 +3,7 @@ package com.ccbft.lyyrobot;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +28,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
     private TextView questionTv;
     private EditText answerEt;
     private Button resetPasswordBtn;
-    private Button loginBtn;
+    private TextView loginTv;
     private static final String TAG = "ForgetPasswordActivity";
 
     @Override
@@ -37,6 +38,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
         initView();
         phoneEt.addTextChangedListener(new HideTextWatcher(phoneEt));
         resetPasswordBtn.setOnClickListener(this);
+        loginTv.setOnClickListener(this);
     }
 
     private void initView() {
@@ -44,7 +46,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
         questionTv=findViewById(R.id.questionTv);
         answerEt=findViewById(R.id.answerEt);
         resetPasswordBtn=findViewById(R.id.resetPasswordBtn);
-        loginBtn=findViewById(R.id.loginBtn);
+        loginTv=findViewById(R.id.loginTv);
 
 
     }
@@ -54,6 +56,10 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
         switch (v.getId()){
             case R.id.resetPasswordBtn:
                 String phoneNum = phoneEt.getText().toString().trim();
+                if(TextUtils.isEmpty(phoneNum)){
+                    Snackbar.make(v,"手机号不能为空",Snackbar.LENGTH_LONG).show();
+                    return;
+                }
                 BmobQuery<User> bmobQuery=new BmobQuery<>();
                 bmobQuery.addWhereEqualTo("secretAnswer",answerEt.getText().toString().trim());
 
@@ -74,7 +80,8 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
                             if(list.size()==1){
                                 User user = list.get(0);
                                 String viewedPassword = user.getViewedPassword();
-                                Snackbar.make(v,"您的密码是：\n"+viewedPassword,Snackbar.LENGTH_LONG).show();
+                                String username = user.getUsername();
+                                Snackbar.make(v,"您的用户名是："+username+"\n您的密码是："+viewedPassword,Snackbar.LENGTH_LONG).show();
                             }else{
                                 Snackbar.make(v,"答案错误！",Snackbar.LENGTH_LONG).show();
                             }
@@ -87,7 +94,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
 
 
                 break;
-            case R.id.loginBtn:
+            case R.id.loginTv:
                 startActivity(new Intent(ForgetPasswordActivity.this,LoginActivity.class));
                 break;
             default:

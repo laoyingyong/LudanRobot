@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobQuery;
@@ -114,7 +115,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         User user=new User();
                         user.setUsername(account);
                         user.setPassword(password);
-                        user.setViewedPassword(password);
+
+                        Random random=new Random();
+                        StringBuilder stringBuilder=new StringBuilder("1");
+                        for (int i = 0; i < 10; i++) {
+                            int n = random.nextInt(10);
+                            stringBuilder.append(""+n);
+                        }
+                        user.setMobilePhoneNumber(stringBuilder.toString().trim());
                         user.setAge(18);
                         user.setNickname("新用户"+System.currentTimeMillis());
                         user.signUp(new SaveListener<User>() {
@@ -158,13 +166,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                     builder.create().show();
                                 }else{
                                     String msg=e.getMessage();
-                                    String result="";
-                                    if(msg.contains(" is null")){
-                                        result="\n用户名或密码不能为空！";
-                                    }else if(msg.contains("already taken")){
-                                        result="\n用户名"+"\""+account+"\""+"已经存在!";
-                                    }
-                                    Snackbar.make(v,"注册失败!"+result,Snackbar.LENGTH_LONG).show();
+                                    Snackbar.make(v,"注册失败!"+msg,Snackbar.LENGTH_LONG).show();
                                 }
 
                             }
